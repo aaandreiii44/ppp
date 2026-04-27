@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Multi Ani Irina</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6ee;
+    --red: #8b1a1a;
+    --red-light: #c0282a;
+    --gold: #b8860b;
+    --gold-light: #d4a017;
+    --text: #2a0a0a;
+    --petal: rgba(180,40,40,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    font-family: "Cormorant Garamond", serif;
+    overflow-x: hidden;
+    background: #1a0505;
+  }
+
+  /* Text background */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: #1a0508;
+    z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(120,10,10,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(80,5,5,0.6) 0%, transparent 60%),
+      rgba(15,2,2,0.45);
+    z-index: 0;
+  }
+
+  /* Text background */
+  .text-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 10px;
+    gap: 0;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .text-bg span {
+    font-family: "Great Vibes", cursive;
+    font-size: 1.15rem;
+    color: #e05070;
+    white-space: nowrap;
+    padding: 4px 12px;
+    line-height: 1.8;
+  }
+
+  /* Falling petals */
+  .petals { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+  .petal {
+    position: absolute;
+    top: -30px;
+    width: 10px; height: 13px;
+    background: radial-gradient(ellipse, rgba(200,50,50,0.85), rgba(140,20,20,0.5));
+    border-radius: 50% 50% 50% 10%;
+    opacity: 0;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-30px) rotate(0deg) translateX(0); opacity: 0; }
+    10%  { opacity: 0.8; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(60px); opacity: 0; }
+  }
+
+  .card {
+    position: relative;
+    z-index: 2;
+    max-width: 660px;
+    width: 100%;
+    background: linear-gradient(160deg, rgba(253,246,238,0.15) 0%, rgba(248,235,220,0.12) 100%);
+    border: 1px solid rgba(180,134,11,0.4);
+    border-radius: 2px;
+    padding: 58px 52px 52px;
+    box-shadow:
+      0 0 0 4px rgba(180,134,11,0.08),
+      0 0 0 5px rgba(180,134,11,0.15),
+      0 20px 80px rgba(80,5,5,0.6),
+      inset 0 0 60px rgba(200,150,80,0.06);
+    animation: cardIn 1.6s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(40px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Gold border ornaments */
+  .orn {
+    position: absolute;
+    width: 44px; height: 44px;
+    border-color: rgba(180,134,11,0.5);
+    border-style: solid;
+  }
+  .orn.tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+  .orn.tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+  .orn.bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+  .orn.br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+
+  .rose-top {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 6px;
+    animation: fadeUp 1s ease 0.2s both;
+    filter: drop-shadow(0 4px 8px rgba(120,10,10,0.3));
+  }
+
+  .title {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    color: var(--red);
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    text-shadow:
+      0 2px 8px rgba(140,26,26,0.25),
+      0 0 40px rgba(180,40,40,0.1);
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .emoji-row {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 28px;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    animation: fadeUp 1s ease 0.45s both;
+  }
+  .div-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(180,134,11,0.5), transparent);
+  }
+  .div-icon { color: var(--gold); font-size: 0.75rem; letter-spacing: 8px; }
+
+  .body-text {
+    font-size: clamp(1rem, 2.4vw, 1.13rem);
+    color: rgba(255,235,210,0.95);
+    line-height: 1.95;
+  }
+  .body-text p { margin-bottom: 20px; text-indent: 1.8em; animation: fadeUp 1s ease both; }
+  .body-text p:nth-child(1) { animation-delay: 0.55s; }
+  .body-text p:nth-child(2) { animation-delay: 0.7s; }
+  .body-text p:nth-child(3) { animation-delay: 0.85s; }
+  .body-text p:nth-child(4) { animation-delay: 1.0s; }
+  .body-text p:nth-child(5) { animation-delay: 1.15s; margin-bottom: 0; }
+
+  .footer {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: fadeUp 1s ease 1.3s both;
+  }
+  .footer-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(180,134,11,0.4), transparent); }
+  .footer-text {
+    font-family: "Great Vibes", cursive;
+    font-size: 1.6rem;
+    color: var(--red);
+    text-shadow: 0 2px 8px rgba(140,26,26,0.2);
+  }
+
+  .extra-text {
+    margin-top: 32px;
+    text-align: center;
+    animation: fadeUp 1s ease 1.3s both;
+  }
+  .extra-text p {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--red);
+    line-height: 1.7;
+    text-shadow: 0 2px 8px rgba(140,26,26,0.25);
+    animation: fadeUp 1s ease both;
+  }
+  .extra-text p:nth-child(1) { animation-delay: 1.3s; }
+  .extra-text p:nth-child(2) { animation-delay: 1.45s; }
+  .extra-text p:nth-child(3) { animation-delay: 1.6s; }
+  .extra-text p:nth-child(4) { animation-delay: 1.75s; }
+</style>
+</head>
+<body>
+
+<div class="text-bg" id="textBg"></div>
+<div class="petals" id="petals"></div>
+
+<div class="card">
+  <div class="orn tl"></div><div class="orn tr"></div>
+  <div class="orn bl"></div><div class="orn br"></div>
+
+  <div class="rose-top">🌹</div>
+  <div class="title">La Mulți Ani Irina</div>
+  <div class="emoji-row">❤️ 🥹</div>
+
+  <div class="divider">
+    <div class="div-line"></div>
+    <div class="div-icon">❧ ❧ ❧</div>
+    <div class="div-line"></div>
+  </div>
+
+  <div class="body-text">
+    <p>Te iubesc atât de mult încât nu știu dacă pot termina acest paragraf, pentru că cuvintele nu pot explica cu adevărat iubirea mea față de tine, dar s-ar putea să fiu viitorul tău soț și tu ultima mea iubită vreodată, și sunt atât de fericit că destinul mi te-a adus.</p>
+    <p>Ești ca cealaltă jumătate a mea și fără tine nu știu unde aș fi. Mă ții pe drumul cel bun și ești mereu acolo pentru mine.</p>
+    <p>Ești lumea mea și nu vreau niciodată să te pierd, nu va trebui niciodată să-ți faci griji că te înșel sau te părăsesc, pentru că tu ești totul pentru mine. Îți mulțumesc că mă iubești așa cum sunt. Îți mulțumesc că mă faci să râd și să zâmbesc când sunt trist sau am o zi proastă. Încă mă bucur când îți văd numele pe telefon.</p>
+    <p>Ești mereu în mintea mea. Ești tot ce vreau, tot ce am nevoie. Ești întreaga mea lume. Știi că te iubesc și îți spun asta în fiecare zi să-ți amintesc, dar nu vei ști niciodată cât de mult te iubesc, pentru că iubirea mea pentru tine nu poate fi exprimată în cuvinte.</p>
+    <p>Știu că nu sunt cel mai bun, dar voi fi mereu aici pentru tine. Cât de mult îmi doresc să-mi pot petrece întreaga viață sub cerul liber privind stelele cu tine. Nicio distanță, durere, ceartă sau diferență de opinie nu poate rupe legătura mea cu tine.</p>
+  </div>
+
+  <div class="extra-text">
+    <p>Vreau doar sărutul tău</p>
+    <p>Vreau doar îmbrățișările tale</p>
+    <p>Vreau doar ochii tăiiiii</p>
+    <p>Te vreau doar pe tineuuuuuu ❤️🌹💋</p>
+  </div>
+
+
+</div>
+
+<script>
+  // Text background
+  const textBg = document.getElementById("textBg");
+  const lines = [
+    "Vreau doar sărutul tău",
+    "Vreau doar îmbrățișările tale",
+    "Vreau doar ochii tăiiiii",
+    "Te vreau doar pe tineee ❤️🌹💋"
+  ];
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement("span");
+    s.textContent = lines[i % lines.length];
+    textBg.appendChild(s);
+  }
+
+  const petals = document.getElementById("petals");
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement("div");
+    p.className = "petal";
+    p.style.left = (Math.random() * 100) + "vw";
+    p.style.animationDuration = (8 + Math.random() * 10) + "s";
+    p.style.animationDelay = (Math.random() * 15) + "s";
+    const size = (8 + Math.random() * 8) + "px";
+    p.style.width = size;
+    p.style.height = (parseInt(size) * 1.3) + "px";
+    petals.appendChild(p);
+  }
+</script>
+</body>
+</html>
